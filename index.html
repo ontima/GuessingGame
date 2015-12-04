@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Guessing Game</title>
+		<link href="http://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="row">
+					<div class="col-md-3">
+						<img class="title-logo" src="images/GuessMyNumber.png" alt="numbers pic">
+					</div>
+					<div class="col-md-9 text-right text-uppercase">
+						<h1 class="title-super text-thin">Guess My Number</h1>
+						<h4>by Ontima Chung</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<hr>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div class="row text-center">
+					<section>
+						<div class="col-md-4">
+							<h3 class="text-uppercase">How To Play</h3>
+							I'm thinking of a number between 1-100.  Submit a guess and I'll let you know if it's too high or too low.  You'll have 5 chances to guess the correct number.
+						</div>
+					</section>
+					<section>
+						<div class="col-md-4">
+							<figure>
+								<img class="img-wide img-responsive" src="images/magic.gif" alt="Magician">
+							</figure>
+						</div>
+					</section>					
+					<section>
+			 			<div class="col-md-4">
+			 				<form>
+			 					<div class="form-group">
+			 						<label for="numInput">Your Guess</label>
+			 						<input type="number" class="form-control" id="numGuess" placeholder="Number 1-100">
+			 					</div>
+			 					<button type="submit" class="btn btn-primary">Submit</button>
+			 					<button type="submit" class="btn btn-default">Restart</button>
+			 					<button type="submit" class="btn btn-default">I Give Up</button>
+			 				</form>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
