@@ -8,9 +8,6 @@ var winningNumber;
 $(document).ready(function() {
 	winningNumber = generateWinningNumber();
 	console.log("winnging number is: " + winningNumber);
-
-	//$('#submitGuessForm').on('click', '#submitButton', playersGuessSubmission);
-
 });
 
 
@@ -28,12 +25,9 @@ function generateWinningNumber(){
 // Fetch the Players Guess
 
 function playersGuessSubmission(){
-//	var guessField = $(this).closest('#submitGuessForm').find('#guess');
-//	playersGuess = +$(this).closest('#submitGuessForm').find('#guess').val();
-//	playersGuess = +guessField.val();
 	playersGuess = +$('#guess').val();
 	console.log("guess is: " + playersGuess);
-	$('#guessInput').val("Enter a number 1-100");
+	$('#guess').val("Enter a number 1-100");
 }
 
 // Determine if the next guess should be a lower or higher number
