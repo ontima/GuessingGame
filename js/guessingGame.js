@@ -3,6 +3,8 @@
 
 var playersGuess;
 var winningNumber;
+var guessArray = [];
+var guessesLeft = 5;
 
 
 $(document).ready(function() {
@@ -28,6 +30,7 @@ function playersGuessSubmission(){
 	playersGuess = +$('#guess').val();
 	console.log("guess is: " + playersGuess);
 	$('#guess').val("Enter a number 1-100");
+	checkGuess();
 }
 
 // Determine if the next guess should be a lower or higher number
@@ -39,7 +42,18 @@ function lowerOrHigher(){
 // Check if the Player's Guess is the winning number 
 
 function checkGuess(){
-	// add code here
+	if (playersGuess === winningNumber) {
+		console.log("Player wins");
+		$('#results').text("You win!");
+	} else if (guessArray.indexOf(playersGuess) > -1) {
+		console.log("You've already guess " + playersGuess);
+		$('#results').text("You've already guess " + playersGuess);
+	} else {
+		console.log("Incorrect guess");
+		guessArray.push(playersGuess);
+		guessesLeft--;
+		$('#results').text("Try Aagin. " + guessesLeft + " guesses left.");
+	}
 }
 
 // Create a provide hint button that provides additional clues to the "Player"
