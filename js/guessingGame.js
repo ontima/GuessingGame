@@ -36,7 +36,11 @@ function playersGuessSubmission(){
 // Determine if the next guess should be a lower or higher number
 
 function lowerOrHigher(){
-	// add code here
+	if (playersGuess < winningNumber) {
+		return ("lower");
+	} else {
+		return ("higher");
+	}
 }
 
 // Check if the Player's Guess is the winning number 
@@ -52,14 +56,19 @@ function checkGuess(){
 		console.log("Incorrect guess");
 		guessArray.push(playersGuess);
 		guessesLeft--;
-		$('#results').text("Try Aagin. " + guessesLeft + " guesses left.");
+		$('#results').text("Try Again.  " + guessesLeft + " guesses left.");
+		provideHint();
 	}
 }
 
 // Create a provide hint button that provides additional clues to the "Player"
 
 function provideHint(){
-	// add code here
+	var diff = Math.abs(playersGuess - winningNumber);
+	var rounded = Math.ceil(diff / 10) * 10;
+	var highlow = lowerOrHigher();
+	var msg = "Your guess is " + highlow + " and within " + rounded + " digits of the winning number";
+	$('#feedback').text(msg);
 }
 
 // Allow the "Player" to Play Again
