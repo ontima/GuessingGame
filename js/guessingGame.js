@@ -48,27 +48,37 @@ function lowerOrHigher(){
 function checkGuess(){
 	if (playersGuess === winningNumber) {
 		console.log("Player wins");
+		clearTextFields();
 		$('#results').text("You win!");
 	} else if (guessArray.indexOf(playersGuess) > -1) {
 		console.log("You've already guess " + playersGuess);
+		clearTextFields();
 		$('#results').text("You've already guess " + playersGuess);
 	} else {
 		console.log("Incorrect guess");
 		guessArray.push(playersGuess);
 		guessesLeft--;
+		clearTextFields();
 		$('#results').text("Try Again.  " + guessesLeft + " guesses left.");
-		provideHint();
+		guessMessage();
 	}
 }
 
-// Create a provide hint button that provides additional clues to the "Player"
-
-function provideHint(){
+function guessMessage() {
 	var diff = Math.abs(playersGuess - winningNumber);
 	var rounded = Math.ceil(diff / 10) * 10;
 	var highlow = lowerOrHigher();
 	var msg = "Your guess is " + highlow + " and within " + rounded + " digits of the winning number";
 	$('#feedback').text(msg);
+}
+
+// Create a provide hint button that provides additional clues to the "Player"
+
+function provideHint(){
+	var num1 = generateWinningNumber();
+	var num2 = generateWinningNumber();
+	clearTextFields();
+	$('#hint').text("One of these is the winning number: " + num1 + "," + winningNumber + "," + num2);
 }
 
 // Allow the "Player" to Play Again
@@ -77,6 +87,11 @@ function playAgain(){
 	// add code here
 }
 
+function clearTextFields() {
+	$('#results').text("");
+	$('#feedback').text("");
+	$('#hint').text("");
+}
 
 /* **** Event Listeners/Handlers ****  */
 
