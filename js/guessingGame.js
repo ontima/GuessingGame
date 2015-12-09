@@ -9,8 +9,6 @@ var guessesLeft = 5;
 
 generateWinningNumber();
 
-
-
 /* **** Guessing Game Functions **** */
 
 // Generate the Winning Number
@@ -44,21 +42,30 @@ function lowerOrHigher(){
 // Check if the Player's Guess is the winning number 
 
 function checkGuess(){
-	if (playersGuess === winningNumber) {
-		console.log("Player wins");
+	if (playersGuess < 0 || playersGuess > 100) {
 		clearTextFields();
-		$('#results').text("You win!");
-	} else if (guessArray.indexOf(playersGuess) > -1) {
-		console.log("You've already guess " + playersGuess);
-		clearTextFields();
-		$('#results').text("You've already guess " + playersGuess);
+		$('#results').text("Invalid number. Enter a number between 1-100");
 	} else {
-		console.log("Incorrect guess");
-		guessArray.push(playersGuess);
-		guessesLeft--;
-		clearTextFields();
-		$('#results').text("Try Again.  " + guessesLeft + " guesses left.");
-		guessMessage();
+		if (playersGuess === winningNumber) {
+			console.log("Player wins");
+			clearTextFields();
+			$('#results').text("You win!");
+		} else if (guessArray.indexOf(playersGuess) > -1) {
+			console.log("You've already guess " + playersGuess);
+			clearTextFields();
+			$('#results').text("You've already guess " + playersGuess);
+		} else {
+			console.log("Incorrect guess");
+			guessArray.push(playersGuess);
+			guessesLeft--;
+			clearTextFields();
+			if (guessesLeft > 0) {
+				$('#results').text("Try Again.  " + guessesLeft + " guesses left.");
+				guessMessage();
+			} else {
+				$('#results').text("You lost!");
+			}
+		}
 	}
 }
 
@@ -98,3 +105,10 @@ function clearTextFields() {
 
 /* **** Event Listeners/Handlers ****  */
 
+//to catch return key
+$("input").on("keydown",function search(e) {
+    if(e.keyCode == 13) {
+    	e.preventDefault();
+        playersGuessSubmission();
+    }
+});
