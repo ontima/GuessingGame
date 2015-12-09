@@ -7,10 +7,7 @@ var guessArray = [];
 var guessesLeft = 5;
 
 
-$(document).ready(function() {
-	winningNumber = generateWinningNumber();
-	console.log("winnging number is: " + winningNumber);
-});
+generateWinningNumber();
 
 
 
@@ -21,7 +18,8 @@ $(document).ready(function() {
 function generateWinningNumber(){
 	var min = 1;
 	var max  = 100;
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	winningNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+	console.log("winnging number is: " + winningNumber);
 }
 
 // Fetch the Players Guess
@@ -66,6 +64,8 @@ function checkGuess(){
 
 function guessMessage() {
 	var diff = Math.abs(playersGuess - winningNumber);
+	console.log("win number is " + winningNumber);
+	console.log("diff is " + diff);
 	var rounded = Math.ceil(diff / 10) * 10;
 	var highlow = lowerOrHigher();
 	var msg = "Your guess is " + highlow + " and within " + rounded + " digits of the winning number";
@@ -84,7 +84,10 @@ function provideHint(){
 // Allow the "Player" to Play Again
 
 function playAgain(){
-	// add code here
+	clearTextFields();
+	guessesLeft = 5;
+	guessArray = [];
+	generateWinningNumber();
 }
 
 function clearTextFields() {
